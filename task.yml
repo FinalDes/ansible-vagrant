@@ -6,7 +6,10 @@
         public_key_path: 'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub'
     tasks:
       - name: update latest packages
-        apt: update-cache=yes upgrade=dist cache_valid_time=86400
+        apt:
+          update_cache: yes
+          upgrade: dist
+          cache_valid_time: 86400
       - name: set sudo permission
         lineinfile:
           path: /etc/ssh/sshd_config
