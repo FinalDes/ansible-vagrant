@@ -1,0 +1,4 @@
+- name: ssh
+  src: git@gitlab.com:Finaldes/ansible-ssh.git
+  scm: git
+  version: master
