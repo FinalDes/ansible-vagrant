@@ -1,21 +1,23 @@
 ---
   - hosts: vagrant
-    become: true
     roles:
       - role: ssh
         public_key_path: 'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub'
     tasks:
       - name: update latest packages
+        become: true
         apt:
           update_cache: yes
           upgrade: dist
           cache_valid_time: 86400
       - name: set sudo permission
+        become: true
         lineinfile:
           path: /etc/ssh/sshd_config
           state: present
           line: 'UseDNS no'
       - name: set sudo permission
+        become: true
         lineinfile:
           path: /etc/sudoers
           state: present
