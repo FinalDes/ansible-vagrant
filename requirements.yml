@@ -2,3 +2,7 @@
   src: git@gitlab.com:Finaldes/ansible-ssh.git
   scm: git
   version: master
+- name: nfs-server
+  src: git@github.com:FinalDes/ansible-nfs-server.git
+  scm: git
+  version: master

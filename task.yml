@@ -3,6 +3,8 @@
     roles:
       - role: ssh
         public_key_path: 'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub'
+      - role: nfs-server
+        become: true
     tasks:
       - name: update latest packages
         become: true
