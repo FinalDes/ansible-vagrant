@@ -24,6 +24,6 @@ script:
   - ansible-playbook task.yml -i test/hostfile --syntax-check
 
 cache: 
-  - pip: true
+  pip: true
   directories:
     - "node_modules"
