@@ -1,0 +1,8 @@
+- name: ssh
+  src: https://github.com/FinalDes/ansible-ssh.git
+  scm: git
+  version: master
+- name: nfs-server
+  src: https://github.com/FinalDes/ansible-nfs-server.git
+  scm: git
+  version: master

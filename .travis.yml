@@ -18,9 +18,12 @@ install:
 
   # Check ansible version
   - ansible --version
-
-cache: pip
 script:
   # Basic role syntax check
-  - ansible-galaxy install -r requirements.yml
+  - ansible-galaxy install -r requirements.http.yml
   - ansible-playbook task.yml -i test/hostfile --syntax-check
+
+cache: 
+  - pip: true
+  directories:
+    - "node_modules"
