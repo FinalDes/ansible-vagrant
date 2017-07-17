@@ -20,4 +20,4 @@ install:
 
 script:
   # Basic role syntax check
-  - ansible-playbook task.yml -i tests/inventory --syntax-check
+  - ansible-playbook task.yml -i test/hostfile --syntax-check
