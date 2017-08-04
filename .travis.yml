@@ -25,5 +25,3 @@ script:
 
 cache: 
   pip: true
-  directories:
-    - "node_modules"
