@@ -1,5 +1,12 @@
 ---
   - hosts: vagrant
+    pre_tasks:
+      - name: disable auto update
+        become: true
+        lineinfile:
+          path: /etc/apt/apt.conf.d/10periodic
+          regexp: "APT::Periodic::Update-Package-Lists \"1\";"
+          line: "APT::Periodic::Update-Package-Lists \"0\";"
     roles:
       - role: nfs-server
         become: true
