@@ -25,3 +25,7 @@
           state: present
           line: 'vagrant ALL=(ALL) NOPASSWD: ALL'
           validate: 'visudo -cf %s'
+      - name: remove bash_history
+        file:
+           path: ~/.bash_history
+           state: absent
