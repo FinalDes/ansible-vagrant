@@ -1,5 +1,5 @@
 - name: ssh
-  src: git@gitlab.com:Finaldes/ansible-ssh.git
+  src: git@github.com:FinalDes/ansible-ssh.git
   scm: git
   version: master
 - name: nfs-server
