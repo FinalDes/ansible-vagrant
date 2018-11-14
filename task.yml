@@ -1,13 +1,27 @@
 ---
   - hosts: vagrant
     pre_tasks:
-      - name: disable auto update
+      - name: disable auto update1
         become: true
         lineinfile:
           path: /etc/apt/apt.conf.d/10periodic
           regexp: "APT::Periodic::Update-Package-Lists \"1\";"
           line: "APT::Periodic::Update-Package-Lists \"0\";"
         when: ansible_distribution == 'Ubuntu'
+      - name: disable auto update2
+        become: true
+        lineinfile:
+          path: /etc/apt/apt.conf.d/20auto-upgrades
+          regexp: "APT::Periodic::Update-Package-Lists \"1\";"
+          line: "APT::Periodic::Update-Package-Lists \"0\";"
+        when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
+      - name: disable auto update3
+        become: true
+        lineinfile:
+          path: /etc/apt/apt.conf.d/20auto-upgrades
+          regexp: "APT::Periodic::Unattended-Upgrade \"1\";"
+          line: "APT::Periodic::Unattended-Upgrade \"0\";"
+        when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '18.04'
       - name: update latest packages
         become: true
         apt:
