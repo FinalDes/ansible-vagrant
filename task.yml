@@ -1,5 +1,5 @@
 ---
-  - hosts: vagrant
+  - hosts: all
     pre_tasks:
       - name: disable auto update1
         become: true
@@ -27,10 +27,16 @@
         apt:
           update_cache: yes
           upgrade: dist
+      - name: remove unattended-upgrades
+        become: true
+        apt:
+          name: unattended-upgrades
+          state: absent
     roles:
       - role: nfs-server
         become: true
       - role: ssh
+        # public_key_path: "{{ lookup('file', '~/.ssh/config.d/jeko-digitalOcean/jeko-docker.pub') }}"
         public_key_path: 'https://raw.githubusercontent.com/mitchellh/vagrant/master/keys/vagrant.pub'
     tasks:
       - name: set sudo permission
@@ -51,6 +57,9 @@
         apt:
           name: open-vm-tools
           state: present
+      - name: set vim as default editor
+        command: update-alternatives --set editor /usr/bin/vim.basic
+        tags: common
       - name: remove bash_history
         file:
            path: ~/.bash_history
